@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>WHICH WATCHER</title>
+    
+    <script src="./components/navbar.js"></script>
+    <script src="./components/filters.js"></script>
+    <script src="./components/home-page.js"></script>
+    <script src="./components/movies-page.js"></script>
+    <script src="./components/movies-list-item.js"></script>
+    <script src="./components/movies-detail.js"></script>
+    <script src="./components/series-page.js"></script>
+    <script src="./components/series-list-item.js"></script>
+    <script src="./components/series-detail.js"></script>
+    <script src="./components/signIn-page.js"></script>
+    <script src="./components/signOut-page.js"></script>
+    <script src="./components/signUp-page.js"></script>
+
+    <script src='../node_modules/vue/dist/vue.js'></script>
+    <script src='../node_modules/vue-router/dist/vue-router.js'></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div id='app'>
+            <div class="row">
+                <navbar></navbar>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <filters></filters>
+                </div>
+                <div class="col-md-10">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Vue.component('navbar', VueWW.navbar);
+        Vue.component('filters', VueWW.filters);
+        Vue.component('home-page', VueWW.homePage);
+        Vue.component('movies-page', VueWW.moviesPage);
+        Vue.component('movies-list-item', VueWW.moviesListItem);
+        Vue.component('movies-detail', VueWW.moviesDetail);
+        Vue.component('series-page', VueWW.seriesPage);
+        Vue.component('series-list-item', VueWW.seriesListItem);
+        Vue.component('series-detail', VueWW.seriesDetail);
+        Vue.component('signIn-page', VueWW.signInPage);
+        Vue.component('signOut-page', VueWW.signOutPage);
+        Vue.component('signUp-page', VueWW.signUpPage);
+
+
+        const routes = [
+            { path: '/home', component: VueWW.homePage},
+            { path: '/movies', component: VueWW.moviesPage},
+            { path: '/movie/:id', component: VueWW.moviesDetail},
+            { path: '/series', component: VueWW.seriesPage},
+            { path: '/serie/:id', component: VueWW.seriesDetail},
+            { path: '/signIn', component: VueWW.signInPage},
+            { path: '/signOut', component: VueWW.signOutPage},
+            { path: '/signUp', component: VueWW.signUpPage},
+        ]
+
+        const router = new VueRouter({
+             routes
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {},
+            router,
+        })
+
+    </script>
+</body>
+
+</html>
